@@ -2,7 +2,11 @@
 
 return [
     'autoload' => false,
-    'hooks' => [],
+    'hooks' => [
+        'config_init' => [
+            'ueditor',
+        ],
+    ],
     'route' => [],
     'priority' => [],
     'domain' => '',

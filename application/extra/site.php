@@ -15,24 +15,17 @@ return array (
   'fixedpage' => 'dashboard',
   'categorytype' => 
   array (
-    'default' => 'Default',
-    'page' => 'Page',
-    'article' => 'Article',
+    'default' => '默认',
+    'page' => '单页',
+    'article' => '文章',
     'test' => 'Test',
   ),
   'configgroup' => 
   array (
-    'basic' => 'Basic',
-    'email' => 'Email',
-    'dictionary' => 'Dictionary',
-    'user' => 'User',
-    'example' => 'Example',
-  ),
-  'attachmentcategory' => 
-  array (
-    'category1' => 'Category1',
-    'category2' => 'Category2',
-    'custom' => 'Custom',
+    'basic' => '基础配置',
+    'dictionary' => '字典配置',
+    'rule' => '规则说明',
+    'image' => '图片管理',
   ),
   'mail_type' => '1',
   'mail_smtp_host' => 'smtp.qq.com',
@@ -41,4 +34,17 @@ return array (
   'mail_smtp_pass' => 'password',
   'mail_verify_type' => '2',
   'mail_from' => '10000@qq.com',
+  'attachmentcategory' => 
+  array (
+    'category1' => '分类一',
+    'category2' => '分类二',
+    'custom' => '自定义',
+  ),
+  'disclaimer' => '',
+  'violation' => '',
+  'platform' => '',
+  'carousel' => 
+  array (
+    0 => '',
+  ),
 );
