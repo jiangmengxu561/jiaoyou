@@ -76,6 +76,8 @@ class User extends Backend
             $this->token();
         }
         $row = $this->model->get($ids);
+
+//        print_r($row);die;
         $this->modelValidate = true;
         if (!$row) {
             $this->error(__('No Results were found'));
