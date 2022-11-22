@@ -1,0 +1,58 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Member_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-member_name" class="form-control" name="row[member_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-price" class="form-control" step="0.01" name="row[price]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Consumption')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-consumption" class="form-control" name="row[consumption]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Extract')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-extract" class="form-control" name="row[extract]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Choice')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-choice" class="form-control" name="row[choice]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Choicenumber')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-choiceNumber" class="form-control" name="row[choiceNumber]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Minimum')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-minimum" class="form-control" name="row[minimum]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Service')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-Service" class="form-control" name="row[Service]" type="text">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

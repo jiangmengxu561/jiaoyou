@@ -42,9 +42,12 @@ return array (
   ),
   'disclaimer' => '',
   'violation' => '',
-  'platform' => '',
   'carousel' => 
   array (
     0 => '',
   ),
+  'kefu' => '',
+  'about' => '',
+  'platform' => '',
+  'privacy' => '<p><span style="color: #2F2E3F; font-family: &quot;PingFang SC&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, &quot;Source Han Sans&quot;, &quot;Noto Sans CJK Sc&quot;, &quot;Microsoft YaHei&quot;, &quot;Microsoft Jhenghei&quot;, sans-serif; font-size: 14px; background-color: #F7F9FC;">隐私政策： 隐私政策尊重并保护所有使用隐私政策网络服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，我们的隐私政策</span></p>',
 );
