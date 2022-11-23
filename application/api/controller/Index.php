@@ -3,13 +3,14 @@
 namespace app\api\controller;
 
 use app\common\controller\Api;
+use app\common\model\Config;
 
 /**
  * 首页接口
  */
 class Index extends Api
 {
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = ['carousel'];
     protected $noNeedRight = ['*'];
 
     /**
@@ -20,4 +21,8 @@ class Index extends Api
     {
         $this->success('请求成功');
     }
+
+
+
+
 }

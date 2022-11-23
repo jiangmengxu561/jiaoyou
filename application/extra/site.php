@@ -44,7 +44,9 @@ return array (
   'violation' => '',
   'carousel' => 
   array (
-    0 => '',
+    0 => 'http://www.jiaoyousq.com/uploads/20221123/021566c749f0f4c1c2686eb66430daff.jpg',
+    1 => 'http://www.jiaoyousq.com/uploads/20221123/784a28b58398eff1612b402105ff3429.jpg',
+    2 => 'http://www.jiaoyousq.com/uploads/20221123/51932fdd42f035119d453a72fb59f223.jpg',
   ),
   'kefu' => '',
   'about' => '',
