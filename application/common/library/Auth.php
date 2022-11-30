@@ -162,6 +162,7 @@ class Auth
             'level'    => 1,
             'score'    => 0,
             'avatar'   => '',
+            'openid'   => $extend['openid'],
         ];
         $params = array_merge($data, [
             'nickname'  => preg_match("/^1[3-9]{1}\d{9}$/",$username) ? substr_replace($username,'****',3,4) : $username,

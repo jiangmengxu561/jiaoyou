@@ -7,6 +7,7 @@ use app\common\library\Ems;
 use app\common\library\Sms;
 use fast\Random;
 use think\Config;
+use think\Db;
 use think\Validate;
 
 /**
@@ -14,7 +15,7 @@ use think\Validate;
  */
 class User extends Api
 {
-    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third'];
+    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third','information'];
     protected $noNeedRight = '*';
 
     public function _initialize()
@@ -344,5 +345,79 @@ class User extends Api
         } else {
             $this->error($this->auth->getError());
         }
+    }
+
+
+    public function information(){
+        $passive_user = $this->request->param('passive_user');
+        $user = $this->auth->getUser();
+
+        $user['id'] = 1;
+        $data = Db::name('user')
+            ->where('id',$passive_user)
+            ->field('avatar,username,address,age,bio,isrealname,WeChatNumber,phoneNumber,QQNumber,album_images,video_files')
+            ->find();
+
+        $res = Db::name('answer')
+            ->where('userid',$user['id'])
+            ->where('passive_user',$passive_user)
+            ->where('isclearance',1)
+            ->count();
+        if ($res == 0){
+            $data['isphone'] = 0;
+            $data['iswechat']= 0;
+            $data['isQQ']    = 0;
+        }elseif ($res ==1){
+            $data['isphone'] = 0;
+            $data['iswechat']= 0;
+            $data['isQQ']    = 1;
+        }elseif ($res ==2 ){
+            $data['isphone'] = 0;
+            $data['iswechat']= 1;
+            $data['isQQ']    = 1;
+        }else{
+            $data['isphone'] = 1;
+            $data['iswechat']= 1;
+            $data['isQQ']    = 1;
+        }
+        $answernumber = Db::name('answer')
+            ->where('userid',$user['id'])
+            ->where('passive_user',$passive_user)
+            ->sum('answernumber');
+        if ($answernumber >=1){
+            $data['isimage'] = 1;
+        }else{
+            $data['isimage'] = 0;
+        }
+
+        if ($answernumber >= 3){
+            $data['isvideo'] = 1;
+        }else{
+            $data['isvideo'] = 0;
+        }
+
+
+        $data['album_images'] = explode(',',$data['album_images']);
+        $data['video_files'] = explode(',',$data['video_files']);
+
+        //记录浏览
+        $visit = [
+            'active_user' => $user['id'],
+            'passive_user'=> $passive_user,
+            'createtime'  => time()
+        ];
+        $isvisit = Db::name('visit')
+            ->where('active_user',$user['id'])
+            ->where('passive_user',$passive_user)
+            ->find();
+        if(!empty($isvisit)){
+            Db::name('visit')
+                ->where('id',$isvisit['id'])
+                ->update(['createtime'=>time()]);
+        }else{
+            Db::name('visit')->insert($visit);
+        }
+
+        $this->success('success',$data);
     }
 }

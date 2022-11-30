@@ -512,3 +512,42 @@ EOT;
         return $icon;
     }
 }
+
+
+
+//获取OPenid
+function getopenid($code,$appid,$secret){
+    $url = "https://api.weixin.qq.com/sns/jscode2session";
+    // 参数
+    $params['appid']= $appid;
+    $params['secret']= $secret;
+    $params['js_code']= $code;
+    $params['grant_type']= 'authorization_code';
+    // 微信API返回的session_key 和 openid
+    $arr = Post($params,$url,  'POST');
+    $arr = json_decode($arr,true);
+    // 判断是否成功
+    if(isset($arr['errcode']) && !empty($arr['errcode'])){
+        return ['code'=>1,'msg'=>$arr['errmsg']];
+    }else{
+        return ['code'=>0,'msg'=>'获取成功','openid'=>$arr['openid']];
+    }
+}
+
+function Post($curlPost, $url, $ssl = false)
+{
+    $curl = curl_init();
+
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_NOBODY, true);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
+    if (!$ssl) {
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    }
+    $return_str = curl_exec($curl);
+    return $return_str;
+}
